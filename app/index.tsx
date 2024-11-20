@@ -17,6 +17,7 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
 
   const handleLogin = () => {
+    // MOCK LOGIN
     if (!email || !senha) {
       Alert.alert("Erro", "Por favor, preencha todos os campos.");
       return;
@@ -27,12 +28,14 @@ export default function Home() {
     setTimeout(() => {
       setLoading(false);
 
+      // MOCK LOGIN - VENDEDOR
       if (email === "luis@gmail.com" && senha) {
-        return router.replace("/compras/myAnnouncements");
+        return router.replace("/vendedor/meus-anuncios");
       }
 
+      // MOCK LOGIN - COMPRADOR
       if (email === "gabriel@gmail.com" && senha) {
-        return router.replace("/compras/announcements");
+        return router.replace("/comprador/busca-anuncio");
       }
     }, 1500);
   };
@@ -69,10 +72,7 @@ export default function Home() {
           disabled={!email || !senha}
         >
           <Text
-            style={[
-              styles.button,
-              (!email || !senha) && styles.buttonDisabled,
-            ]}
+            style={[styles.button, (!email || !senha) && styles.buttonDisabled]}
           >
             ENTRAR
           </Text>

@@ -1,3 +1,4 @@
+import UIButton from "@/components/ui/Button";
 import React, { useState } from "react";
 import { View, Text, FlatList, Button, StyleSheet, Alert } from "react-native";
 
@@ -5,28 +6,28 @@ type Anuncio = {
   id: string;
   kwPorMes: number;
   valorPorKwh: number;
-  contaBancaria: string;
+  ativo: boolean;
 };
 
-const SupplyList = () => {
+const MyAnnouncements = () => {
   const [anuncios, setAnuncios] = useState<Anuncio[]>([
     {
       id: "1",
       kwPorMes: 100,
       valorPorKwh: 0.25,
-      contaBancaria: "Conta: 123-456-789",
+      ativo: true,
     },
     {
       id: "2",
       kwPorMes: 50,
       valorPorKwh: 0.3,
-      contaBancaria: "Conta: 987-654-321",
+      ativo: true,
     },
     {
       id: "3",
       kwPorMes: 150,
       valorPorKwh: 0.2,
-      contaBancaria: "Conta: 456-789-012",
+      ativo: false,
     },
   ]);
 
@@ -38,26 +39,32 @@ const SupplyList = () => {
 
   const handleExcluir = (id: string) => {
     Alert.alert("Excluir Anúncio", `Anúncio ${id} será excluído.`);
-
-    // TO DO: Tornar "DISABLED"
   };
 
   const renderAnuncio = ({ item }: { item: Anuncio }) => (
     <View style={styles.card}>
-      <Text style={styles.title}>Anúncio {item.id}</Text>
-      <Text style={styles.text}>KWh/mês: {item.kwPorMes} KWh</Text>
-      <Text style={styles.text}>Valor por KWh: R$ {item.valorPorKwh}</Text>
-      <Text style={styles.text}>Conta Bancária: {item.contaBancaria}</Text>
+      <Text style={[styles.title, !item.ativo && styles.titleInactive]}>
+        Anúncio {item.id}
+      </Text>
+      <Text style={[styles.text, !item.ativo && styles.textInactive]}>
+        KWh/mês: {item.kwPorMes} KWh
+      </Text>
+      <Text style={[styles.text, !item.ativo && styles.textInactive]}>
+        Valor por KWh: R$ {item.valorPorKwh}
+      </Text>
 
       <View style={styles.buttonContainer}>
-        <Button
-          title="Desativar"
+        <UIButton
+          style={{ backgroundColor: "red" }}
           onPress={() => handleExcluir(item.id)}
-          color="red"
+          title="Inativar"
+          disabled={!item.ativo}
         />
-        <Button
-          title="Impulsionar"
+
+        <UIButton
           onPress={() => handleImpulsionar(item.id)}
+          title="Impulsionar"
+          disabled={!item.ativo}
         />
       </View>
     </View>
@@ -79,32 +86,43 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: "#fff",
+    backgroundColor: "#F4FFF8",
+    marginTop: 50,
+    paddingTop: 50,
   },
   header: {
-    fontSize: 24,
-    fontWeight: "bold",
+    fontSize: 28,
+    fontFamily: "LatoBold",
+    color: "#105f53",
     marginBottom: 20,
   },
   card: {
-    padding: 15,
     marginBottom: 15,
-    backgroundColor: "#f0f0f0",
-    borderRadius: 8,
+    padding: 20,
     shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
+    shadowOffset: { width: 2, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 12,
+  },
+  cardContent: {
+    padding: 10,
   },
   title: {
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: "bold",
-    marginBottom: 5,
+    color: "#000000c1",
+    marginBottom: 10,
+  },
+  titleInactive: {
+    color: "#6b6b6b63",
   },
   text: {
     fontSize: 16,
-    marginBottom: 5,
+    color: "#3C3C3C",
+    marginBottom: 8,
+  },
+  textInactive: {
+    color: "#6b6b6b63",
   },
   buttonContainer: {
     marginTop: 10,
@@ -113,4 +131,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SupplyList;
+export default MyAnnouncements;

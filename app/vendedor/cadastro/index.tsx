@@ -23,14 +23,12 @@ export default function Home() {
   const handleSubmit = () => {};
 
   const handleChange = (text: string) => {
-    // Removendo caracteres não numéricos
     const numericValue = text.replace(/[^0-9]/g, "");
 
-    // Convertendo para número e formatando para moeda
     const formattedValue = new Intl.NumberFormat("pt-BR", {
       style: "currency",
       currency: "BRL",
-    }).format(parseFloat(numericValue) / 100); // Dividindo por 100 para casas decimais
+    }).format(parseFloat(numericValue) / 100);
 
     setValue(formattedValue);
   };
@@ -134,6 +132,5 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 6,
-    // elevation: 3,
   },
 });

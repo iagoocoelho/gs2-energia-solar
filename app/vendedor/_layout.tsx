@@ -6,7 +6,7 @@ export default function TabLayout() {
   return (
     <Tabs screenOptions={{ tabBarActiveTintColor: "#45C4B0" }}>
       <Tabs.Screen
-        name="myAnnouncements"
+        name="meus-anuncios"
         options={{
           headerShown: false,
           title: "Meus Anúncios",
@@ -16,7 +16,7 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="announcements"
+        name="anuncios"
         options={{
           title: "Anúncios",
           headerShown: false,

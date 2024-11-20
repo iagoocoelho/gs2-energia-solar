@@ -8,6 +8,19 @@ import {
 } from "react-native";
 import Slider from "@react-native-community/slider";
 import { useNavigation } from "@react-navigation/native";
+import { router } from "expo-router";
+import UIButton from "@/components/ui/Button";
+
+type Fornecedor = {
+  id: number;
+  kwh: number;
+  preco: number;
+};
+
+type Combinacao = {
+  combinacao: Fornecedor[];
+  custo: number;
+};
 
 const fornecedores: Fornecedor[] = [
   { id: 1, kwh: 7, preco: 50 },
@@ -22,22 +35,9 @@ const fornecedores: Fornecedor[] = [
   { id: 10, kwh: 6, preco: 40 },
 ];
 
-type Fornecedor = {
-  id: number;
-  kwh: number;
-  preco: number;
-};
-
-type Combinacao = {
-  combinacao: Fornecedor[];
-  custo: number;
-};
-
 export default function BuscaScreen() {
   const [kwh, setKwh] = useState<number>(10);
   const [combinacoes, setCombinacoes] = useState<Combinacao[]>([]);
-
-  const navigation = useNavigation();
 
   const handleBuscar = () => {
     const resultados = gerarCombinacoes(kwh);
@@ -45,15 +45,17 @@ export default function BuscaScreen() {
   };
 
   const handleContratar = (item: Combinacao) => {
-    navigation.navigate("payment", {
-      combinacao: item.combinacao,
-      custo: item.custo,
-      totalKwh: item.combinacao.reduce((acc, f) => acc + f.kwh, 0),
+    router.replace({
+      pathname: "/comprador/pagamento",
+      params: {
+        combinacao: JSON.stringify(item.combinacao),
+        custo: item.custo,
+        totalKwh: item.combinacao.reduce((acc, f) => acc + f.kwh, 0),
+      },
     });
   };
 
   const gerarCombinacoes = (kwh: number) => {
-    // TO DO: Ordernar prioriorizando os fornecedores primeiro fornecedores impulsionados e depois mais baratos
     const resultados: Combinacao[] = [];
     const toleranciaKWh = 1;
     const fornecedoresOrdenados = fornecedores.sort(
@@ -86,38 +88,39 @@ export default function BuscaScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Selecione o consumo (KWh/mês):</Text>
-      <Text style={styles.value}>{kwh} KWh</Text>
+      <Text style={styles.header}>Selecione o Consumo (KWh/mês):</Text>
+      <Text style={styles.subHeader}>{kwh} KWh</Text>
 
       <Slider
-        style={{ width: 300, height: 40 }}
+        style={styles.slider}
         minimumValue={5}
         maximumValue={50}
         step={1}
         onValueChange={setKwh}
-        minimumTrackTintColor="#1E90FF"
-        maximumTrackTintColor="#000000"
+        minimumTrackTintColor="#105f53"
+        maximumTrackTintColor="#3C3C3C"
       />
 
-      <TouchableOpacity style={styles.button} onPress={handleBuscar}>
-        <Text style={styles.buttonText}>Buscar</Text>
-      </TouchableOpacity>
+      <UIButton onPress={handleBuscar} title="Buscar" />
+
+      {combinacoes.length > 0 && (
+        <Text style={styles.titleList}>Lista de Combinações:</Text>
+      )}
 
       <FlatList
         data={combinacoes}
         keyExtractor={(_, index) => index.toString()}
-        renderItem={({ item }) => (
+        renderItem={({ item, index }) => (
           <View style={styles.card}>
-            <Text style={styles.cardText}>
-              Combinação:{" "}
-              {item.combinacao.map((f) => `${f.kwh}KWh`).join(" + ")}
+            <Text style={styles.cardTitle}>Combinação {index + 1}</Text>
+            <Text style={styles.text}>
+              {item.combinacao.map((f) => `${f.kwh} KWh`).join(" + ")}
             </Text>
-            <Text style={styles.cardText}>Custo Mensal: R$ {item.custo}</Text>
-            <Text style={styles.cardText}>
-              Total KWh da Combinação:{" "}
-              {item.combinacao.reduce((acc, f) => acc + f.kwh, 0)}KWh
+            <Text style={styles.text}>Custo Mensal: R$ {item.custo}</Text>
+            <Text style={styles.text}>
+              Total KWh: {item.combinacao.reduce((acc, f) => acc + f.kwh, 0)}{" "}
+              KWh
             </Text>
-
             <TouchableOpacity
               style={styles.contractButton}
               onPress={() => handleContratar(item)}
@@ -134,54 +137,75 @@ export default function BuscaScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#f8f9fa",
     padding: 20,
+    backgroundColor: "#F4FFF8",
+    marginTop: 50,
+    paddingTop: 50,
   },
-  title: {
-    fontSize: 18,
-    fontWeight: "bold",
-    marginBottom: 10,
+  header: {
+    fontSize: 24,
+    color: "#105f53",
+    marginBottom: 20,
+    fontFamily: "LatoBold",
   },
-  value: {
+  subHeader: {
     fontSize: 16,
+    color: "#6B6B6B",
+    marginBottom: 20,
+  },
+  titleList: {
+    fontSize: 22,
+    color: "#105f53",
+    margin: 20,
+    fontFamily: "LatoBold",
+  },
+  slider: {
+    width: "100%",
+    height: 40,
     marginBottom: 20,
   },
   button: {
-    backgroundColor: "#1E90FF",
+    backgroundColor: "#105f53",
     padding: 15,
-    borderRadius: 5,
+    borderRadius: 8,
     alignItems: "center",
-    marginVertical: 20,
+    marginBottom: 20,
   },
   buttonText: {
-    color: "#ffffff",
+    color: "#FFFFFF",
     fontSize: 16,
     fontWeight: "bold",
   },
   card: {
-    backgroundColor: "#ffffff",
-    padding: 15,
-    borderRadius: 5,
-    marginBottom: 10,
+    backgroundColor: "#FFFFFF",
+    padding: 20,
+    borderRadius: 10,
+    marginBottom: 15,
     shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: { width: 2, height: 2 },
     shadowOpacity: 0.2,
-    shadowRadius: 5,
-    elevation: 3,
+    shadowRadius: 12,
   },
-  cardText: {
+  cardTitle: {
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "#000000c1",
+    marginBottom: 10,
+  },
+  text: {
     fontSize: 16,
-    marginBottom: 5,
+    color: "#3C3C3C",
+    marginBottom: 8,
   },
   contractButton: {
     marginTop: 10,
     backgroundColor: "#28a745",
     padding: 10,
-    borderRadius: 5,
+    borderRadius: 8,
     alignItems: "center",
   },
   contractButtonText: {
-    color: "#ffffff",
+    color: "#FFFFFF",
     fontSize: 14,
     fontWeight: "bold",
   },

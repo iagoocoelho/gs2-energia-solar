@@ -1,4 +1,6 @@
+import UIButton from "@/components/ui/Button";
 import React, { useState, useEffect } from "react";
+import { router } from "expo-router";
 import {
   View,
   Text,
@@ -45,15 +47,14 @@ const TelaListaAnuncios = () => {
     fetchAnuncios();
   }, []);
 
+  const handleLogin = () => {};
+
   const renderAnuncio = ({ item }: { item: Anuncio }) => (
     <TouchableOpacity style={styles.card}>
       <View style={styles.cardContent}>
         <Text style={styles.title}>{item.fornecedor}</Text>
         <Text style={styles.text}>KWh/mês: {item.kwPorMes} KWh</Text>
         <Text style={styles.text}>Valor por KWh: R$ {item.valorPorKwh}</Text>
-        <TouchableOpacity style={styles.compareButton}>
-          <Text style={styles.compareText}>Comparar</Text>
-        </TouchableOpacity>
       </View>
     </TouchableOpacity>
   );
@@ -62,7 +63,7 @@ const TelaListaAnuncios = () => {
     <View style={styles.container}>
       <Text style={styles.header}>Anúncios na Sua Região</Text>
       <Text style={styles.subHeader}>
-        Compare fornecedores para otimizar seu consumo sustentável
+        Compare os preços de fornecedores em sua região.
       </Text>
 
       <FlatList
@@ -72,12 +73,10 @@ const TelaListaAnuncios = () => {
         contentContainerStyle={styles.list}
       />
 
-      <TouchableOpacity
-        style={styles.createButton}
-        onPress={() => alert("Criar Anúncio")}
-      >
-        <Text style={styles.createButtonText}>Criar Meu Anúncio</Text>
-      </TouchableOpacity>
+      <UIButton
+        onPress={() => router.replace("/vendedor/cadastro")}
+        title="Quero criar meu anúncio!"
+      />
     </View>
   );
 };
@@ -87,10 +86,11 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     backgroundColor: "#F4FFF8",
+    marginTop: 50,
+    paddingTop: 50,
   },
   header: {
     fontSize: 28,
-    fontWeight: "bold",
     color: "#105f53",
     marginBottom: 20,
     fontFamily: "LatoBold",
@@ -124,32 +124,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "#3C3C3C",
     marginBottom: 8,
-  },
-  compareButton: {
-    marginTop: 12,
-    backgroundColor: "#13678A",
-    borderRadius: 8,
-    paddingVertical: 8,
-    paddingHorizontal: 16,
-    alignItems: "center",
-  },
-  compareText: {
-    color: "#FFFFFF",
-    fontSize: 16,
-    fontWeight: "bold",
-  },
-  createButton: {
-    backgroundColor: "#45C4B0",
-    paddingVertical: 14,
-    borderRadius: 8,
-    marginTop: 20,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  createButtonText: {
-    color: "#FFFFFF",
-    fontSize: 18,
-    fontWeight: "bold",
   },
 });
 

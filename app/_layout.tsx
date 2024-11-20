@@ -36,14 +36,8 @@ export default function RootLayout() {
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       <Stack>
         <Stack.Screen name="index" options={{ headerShown: false }} />
-        <Stack.Screen name="search" options={{ headerShown: false }} />
-        <Stack.Screen name="payment" options={{ headerShown: false }} />
-        <Stack.Screen
-          name="supplyList"
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen name="pricing" options={{ headerShown: false }} />
-        <Stack.Screen name="compras" options={{ headerShown: false }} />
+        <Stack.Screen name="vendedor" options={{ headerShown: false }} />
+        <Stack.Screen name="comprador" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
       </Stack>
       <StatusBar style="auto" />
