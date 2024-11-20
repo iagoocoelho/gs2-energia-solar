@@ -12,13 +12,14 @@ import "react-native-reanimated";
 
 import { useColorScheme } from "@/hooks/useColorScheme";
 
-// Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
   const [loaded] = useFonts({
-    SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
+    LatoRegular: require("../assets/fonts/Lato-Regular.ttf"),
+    LatoBold: require("../assets/fonts/Lato-Bold.ttf"),
+    SpaceMonoRegular: require("../assets/fonts/SpaceMono-Regular.ttf"),
   });
 
   useEffect(() => {
@@ -39,6 +40,7 @@ export default function RootLayout() {
         <Stack.Screen name="payment" options={{ title: "Pagamento" }} />
         <Stack.Screen name="supplyList" options={{ title: "Lista de Anúncios" }} />
         <Stack.Screen name="pricing" options={{ title: "Média de Preços" }} />
+        <Stack.Screen name="compras" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
       </Stack>
       <StatusBar style="auto" />

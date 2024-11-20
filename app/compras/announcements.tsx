@@ -51,9 +51,6 @@ const TelaListaAnuncios = () => {
         <Text style={styles.title}>{item.fornecedor}</Text>
         <Text style={styles.text}>KWh/mês: {item.kwPorMes} KWh</Text>
         <Text style={styles.text}>Valor por KWh: R$ {item.valorPorKwh}</Text>
-        <TouchableOpacity style={styles.compareButton}>
-          <Text style={styles.compareText}>Comparar</Text>
-        </TouchableOpacity>
       </View>
     </TouchableOpacity>
   );
@@ -124,19 +121,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "#3C3C3C",
     marginBottom: 8,
-  },
-  compareButton: {
-    marginTop: 12,
-    backgroundColor: "#13678A",
-    borderRadius: 8,
-    paddingVertical: 8,
-    paddingHorizontal: 16,
-    alignItems: "center",
-  },
-  compareText: {
-    color: "#FFFFFF",
-    fontSize: 16,
-    fontWeight: "bold",
   },
   createButton: {
     backgroundColor: "#45C4B0",
