@@ -73,7 +73,7 @@ const TelaListaAnuncios = () => {
         style={styles.createButton}
         onPress={() => alert("Criar Anúncio")}
       >
-        <Text style={styles.createButtonText}>Criar Meu Anúncio</Text>
+        <Text style={styles.createButtonText}>Quero criar meu anúncio!</Text>
       </TouchableOpacity>
     </View>
   );

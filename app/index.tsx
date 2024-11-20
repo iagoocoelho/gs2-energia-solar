@@ -1,17 +1,40 @@
-import { Text, View, StyleSheet, TextInput, Alert } from "react-native";
-import { Link } from "expo-router";
+import {
+  Text,
+  View,
+  StyleSheet,
+  TextInput,
+  Alert,
+  TouchableOpacity,
+  ActivityIndicator,
+} from "react-native";
+
 import { useState } from "react";
+import { router } from "expo-router";
 
 export default function Home() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleLogin = () => {
     if (!email || !senha) {
       Alert.alert("Erro", "Por favor, preencha todos os campos.");
       return;
     }
-    Alert.alert("Sucesso", "Login efetuado com sucesso!");
+
+    setLoading(true);
+
+    setTimeout(() => {
+      setLoading(false);
+
+      if (email === "luis@gmail.com" && senha) {
+        return router.replace("/compras/myAnnouncements");
+      }
+
+      if (email === "gabriel@gmail.com" && senha) {
+        return router.replace("/compras/announcements");
+      }
+    }, 1500);
   };
 
   return (
@@ -37,9 +60,24 @@ export default function Home() {
         />
       </View>
 
-      <Link href="/compras/announcements" style={styles.button}>
-        Entrar
-      </Link>
+      {loading ? (
+        <ActivityIndicator size="large" color="#45C4B0" />
+      ) : (
+        <TouchableOpacity
+          onPress={handleLogin}
+          activeOpacity={0.8}
+          disabled={!email || !senha}
+        >
+          <Text
+            style={[
+              styles.button,
+              (!email || !senha) && styles.buttonDisabled,
+            ]}
+          >
+            ENTRAR
+          </Text>
+        </TouchableOpacity>
+      )}
     </View>
   );
 }
@@ -68,6 +106,9 @@ const styles = StyleSheet.create({
     marginTop: 30,
     textTransform: "uppercase",
     color: "#45C4B0",
+  },
+  buttonDisabled: {
+    color: "#A8A8A8",
   },
   input: {
     width: "100%",
