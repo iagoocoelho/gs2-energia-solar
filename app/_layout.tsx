@@ -11,6 +11,7 @@ import { useEffect } from "react";
 import "react-native-reanimated";
 
 import { useColorScheme } from "@/hooks/useColorScheme";
+import AppHeader from "@/components/Avatar";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -40,6 +41,7 @@ export default function RootLayout() {
         <Stack.Screen name="comprador" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
       </Stack>
+      <AppHeader />
       <StatusBar style="auto" />
     </ThemeProvider>
   );
