@@ -1,4 +1,6 @@
+import UIButton from "@/components/ui/Button";
 import React, { useState, useEffect } from "react";
+import { router } from "expo-router";
 import {
   View,
   Text,
@@ -45,6 +47,8 @@ const TelaListaAnuncios = () => {
     fetchAnuncios();
   }, []);
 
+  const handleLogin = () => {};
+
   const renderAnuncio = ({ item }: { item: Anuncio }) => (
     <TouchableOpacity style={styles.card}>
       <View style={styles.cardContent}>
@@ -59,7 +63,7 @@ const TelaListaAnuncios = () => {
     <View style={styles.container}>
       <Text style={styles.header}>Anúncios na Sua Região</Text>
       <Text style={styles.subHeader}>
-        Compare fornecedores para otimizar seu consumo sustentável
+        Compare os preços de fornecedores em sua região.
       </Text>
 
       <FlatList
@@ -69,12 +73,10 @@ const TelaListaAnuncios = () => {
         contentContainerStyle={styles.list}
       />
 
-      <TouchableOpacity
-        style={styles.createButton}
-        onPress={() => alert("Criar Anúncio")}
-      >
-        <Text style={styles.createButtonText}>Quero criar meu anúncio!</Text>
-      </TouchableOpacity>
+      <UIButton
+        onPress={() => router.replace("/compras/cadastro")}
+        title="Quero criar meu anúncio!"
+      />
     </View>
   );
 };
@@ -84,6 +86,8 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     backgroundColor: "#F4FFF8",
+    marginTop: 50,
+    paddingTop: 50,
   },
   header: {
     fontSize: 28,
@@ -122,19 +126,19 @@ const styles = StyleSheet.create({
     color: "#3C3C3C",
     marginBottom: 8,
   },
-  createButton: {
-    backgroundColor: "#45C4B0",
-    paddingVertical: 14,
-    borderRadius: 8,
-    marginTop: 20,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  createButtonText: {
-    color: "#FFFFFF",
-    fontSize: 18,
-    fontWeight: "bold",
-  },
+  // createButton: {
+  //   backgroundColor: "#45C4B0",
+  //   paddingVertical: 14,
+  //   borderRadius: 8,
+  //   marginTop: 20,
+  //   justifyContent: "center",
+  //   alignItems: "center",
+  // },
+  // createButtonText: {
+  //   color: "#FFFFFF",
+  //   fontSize: 18,
+  //   fontWeight: "bold",
+  // },
 });
 
 export default TelaListaAnuncios;

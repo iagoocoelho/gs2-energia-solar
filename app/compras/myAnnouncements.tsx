@@ -1,3 +1,4 @@
+import UIButton from "@/components/ui/Button";
 import React, { useState } from "react";
 import { View, Text, FlatList, Button, StyleSheet, Alert } from "react-native";
 
@@ -55,17 +56,17 @@ const MyAnnouncements = () => {
       </Text>
 
       <View style={styles.buttonContainer}>
-        <Button
-          title="Inativar"
+        <UIButton
+          style={{ backgroundColor: "red" }}
           onPress={() => handleExcluir(item.id)}
-          color="red"
+          title="Inativar"
           disabled={!item.ativo}
         />
-        <Button
-          color={"#45C4B0"}
+
+        <UIButton
+          onPress={() => handleImpulsionar(item.id)}
           title="Impulsionar"
           disabled={!item.ativo}
-          onPress={() => handleImpulsionar(item.id)}
         />
       </View>
     </View>
@@ -88,6 +89,8 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     backgroundColor: "#F4FFF8",
+    marginTop: 50,
+    paddingTop: 50,
   },
   header: {
     fontSize: 24,

@@ -8,7 +8,8 @@ export default function TabLayout() {
       <Tabs.Screen
         name="myAnnouncements"
         options={{
-          title: "Meus Aúncios",
+          headerShown: false,
+          title: "Meus Anúncios",
           tabBarIcon: ({ color }) => (
             <MaterialIcons name="sell" size={28} color={color} />
           ),
@@ -18,9 +19,18 @@ export default function TabLayout() {
         name="announcements"
         options={{
           title: "Anúncios",
+          headerShown: false,
           tabBarIcon: ({ color }) => (
             <FontAwesome5 name="satellite-dish" size={28} color={color} />
           ),
+        }}
+      />
+
+      <Tabs.Screen
+        name="cadastro/index"
+        options={{
+          href: null,
+          headerShown: false,
         }}
       />
     </Tabs>

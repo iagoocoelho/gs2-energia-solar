@@ -35,11 +35,14 @@ export default function RootLayout() {
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       <Stack>
-        <Stack.Screen name="index" options={{ title: "Home" }} />
-        <Stack.Screen name="search" options={{ title: "Busca" }} />
-        <Stack.Screen name="payment" options={{ title: "Pagamento" }} />
-        <Stack.Screen name="supplyList" options={{ title: "Lista de Anúncios" }} />
-        <Stack.Screen name="pricing" options={{ title: "Média de Preços" }} />
+        <Stack.Screen name="index" options={{ headerShown: false }} />
+        <Stack.Screen name="search" options={{ headerShown: false }} />
+        <Stack.Screen name="payment" options={{ headerShown: false }} />
+        <Stack.Screen
+          name="supplyList"
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen name="pricing" options={{ headerShown: false }} />
         <Stack.Screen name="compras" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
       </Stack>
