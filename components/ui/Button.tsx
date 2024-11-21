@@ -37,7 +37,7 @@ const UIButton: React.FC<ButtonProps> = ({
 const styles = StyleSheet.create({
   button: {
     backgroundColor: "#45C4B0",
-    paddingVertical: 14,
+    paddingVertical: 10,
     borderRadius: 8,
     marginTop: 20,
     paddingHorizontal: 15,

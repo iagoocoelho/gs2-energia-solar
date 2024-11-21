@@ -32,13 +32,14 @@ const MyAnnouncements = () => {
   ]);
 
   const handleImpulsionar = (id: string) => {
-    Alert.alert("Impulsionar Anúncio", `Anúncio ${id} será editado.`);
-
-    // TO DO: Add icone de foguete
+    // Alert.alert("Impulsionar Anúncio", `Anúncio ${id} será editado.`);
+    return false;
   };
 
   const handleExcluir = (id: string) => {
-    Alert.alert("Excluir Anúncio", `Anúncio ${id} será excluído.`);
+    // Alert.alert("Excluir Anúncio", `Anúncio ${id} será excluído.`);
+
+    return false;
   };
 
   const renderAnuncio = ({ item }: { item: Anuncio }) => (
@@ -88,7 +89,7 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: "#F4FFF8",
     marginTop: 50,
-    paddingTop: 50,
+    paddingTop: 70,
   },
   header: {
     fontSize: 28,

@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: "#F4FFF8",
     marginTop: 50,
-    paddingTop: 50,
+    paddingTop: 70,
   },
   header: {
     fontSize: 28,

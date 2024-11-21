@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginTop: 50,
-    paddingTop: 50,
+    paddingTop: 70,
   },
   form: {
     width: "100%",
