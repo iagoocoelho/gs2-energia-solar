@@ -37,8 +37,6 @@ Abaixo está a estrutura principal de diretórios do projeto:
 - **`assets/`**: Contém fontes e imagens utilizadas na aplicação.
 - **`components/`**: Contém componentes reutilizáveis.
   - `Avatar.tsx`: Componente de avatar.
-  - `Collapsible.tsx`: Componente de colapsar conteúdo.
-  - `ExternalLink.tsx`: Componente de link externo.
   - `ThemedText.tsx`: Componente de texto com tema.
   - `ThemedView.tsx`: Componente de view com tema.
   - **`ui/`**: Componentes de interface do usuário.
