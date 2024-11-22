@@ -1,50 +1,76 @@
-# Welcome to your Expo app 👋
+# GS2 Energia Solar
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Este é um projeto desenvolvido com Expo para gerenciar anúncios de energia solar. O projeto possui funcionalidades para **compradores** e **vendedores** de energia solar.
 
-## Get started
+---
 
-1. Install dependencies
+## 🚀 Funcionalidades
 
-   ```bash
-   npm install
-   ```
+- Gerenciamento de anúncios de energia solar.
+- Telas dedicadas para compradores e vendedores.
+- Interface moderna com componentes reutilizáveis.
 
-2. Start the app
+---
 
-   ```bash
-    npx expo start
-   ```
+## 📂 Estrutura do Projeto
 
-In the output, you'll find options to open the app in a
+Abaixo está a estrutura principal de diretórios do projeto:
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+### Diretórios e Arquivos Principais
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+- **`.expo/`**: Contém arquivos de configuração do Expo.
+- **`app/`**: Contém as telas e layouts da aplicação.
+  - `_layout.tsx`: Layout principal da aplicação.
+  - `+not-found.tsx`: Tela de erro 404.
+  - **`comprador/`**: Telas e componentes relacionados ao comprador.
+    - `_layout.tsx`: Layout das telas do comprador.
+    - `busca-anuncio.tsx`: Tela de busca de anúncios.
+  - **`pagamento/`**: Tela de pagamento.
+  - `index.tsx`: Tela inicial da aplicação.
+  - **`vendedor/`**: Telas e componentes relacionados ao vendedor.
+- **`assets/`**: Contém fontes e imagens utilizadas na aplicação.
+- **`components/`**: Contém componentes reutilizáveis.
+  - `Avatar.tsx`: Componente de avatar.
+  - `Collapsible.tsx`: Componente de colapsar conteúdo.
+  - `ExternalLink.tsx`: Componente de link externo.
+  - `ThemedText.tsx`: Componente de texto com tema.
+  - `ThemedView.tsx`: Componente de view com tema.
+  - **`ui/`**: Componentes de interface do usuário.
+- **`constants/`**: Contém constantes usadas na aplicação.
+  - `Colors.ts`: Definição de cores.
+- **`hooks/`**: Contém hooks personalizados.
+  - `useColorScheme.ts`: Hook para obter o esquema de cores.
+  - `useColorScheme.web.ts`: Hook para obter o esquema de cores na web.
+  - `useThemeColor.ts`: Hook para obter a cor do tema.
+- **`scripts/`**: Contém scripts utilitários.
+  - `reset-project.js`: Script para resetar o projeto.
+- **`types/`**: Contém definições de tipos TypeScript.
+  - `router.d.ts`: Definições de tipos para o roteador.
+- **`web/`**: Contém arquivos específicos para a versão web da aplicação.
 
-## Get a fresh project
+---
 
-When you're ready, run:
+## Configurações Adicionais
+
+- **`.gitignore`**: Arquivo de configuração do Git para ignorar arquivos e diretórios.
+- **`app.json`**: Arquivo de configuração do Expo.
+- **`expo-env.d.ts`**: Definições de tipos para o Expo.
+- **`package.json`**: Arquivo de configuração do npm.
+- **`tsconfig.json`**: Arquivo de configuração do TypeScript.
+- **`README.md`**: Documentação do projeto.
+
+---
+
+## Instalação e Execução
+
+### Instalação das Dependências
+
+Para instalar as dependências do projeto, execute o seguinte comando:
 
 ```bash
-npm run reset-project
+npm install
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+```bash
+npx expo start
+```
