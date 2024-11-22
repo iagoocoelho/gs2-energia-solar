@@ -1,13 +1,15 @@
 # GS2 Energia Solar
 
-Este é um projeto desenvolvido com Expo para gerenciar anúncios de energia solar. O projeto possui funcionalidades para **compradores** e **vendedores** de energia solar.
+Este é um projeto para faculdade FIAP desenvolvido com React Native Expo para gerenciar anúncios de energia solar. O projeto possui funcionalidades para **compradores** e **vendedores** de energia solar.
 
 ---
 
 ## 🚀 Funcionalidades
 
 - Gerenciamento de anúncios de energia solar.
-- Telas dedicadas para compradores e vendedores.
+- Listagem de Anúncios;
+- Impulsionamento de Anúncios;
+- Média de Precificação na Região;
 - Interface moderna com componentes reutilizáveis.
 
 ---
@@ -38,34 +40,18 @@ Abaixo está a estrutura principal de diretórios do projeto:
   - **`ui/`**: Componentes de interface do usuário.
 - **`constants/`**: Contém constantes usadas na aplicação.
   - `Colors.ts`: Definição de cores.
-- **`hooks/`**: Contém hooks personalizados.
-  - `useColorScheme.ts`: Hook para obter o esquema de cores.
-  - `useColorScheme.web.ts`: Hook para obter o esquema de cores na web.
-  - `useThemeColor.ts`: Hook para obter a cor do tema.
-- **`scripts/`**: Contém scripts utilitários.
-  - `reset-project.js`: Script para resetar o projeto.
-- **`types/`**: Contém definições de tipos TypeScript.
-  - `router.d.ts`: Definições de tipos para o roteador.
-- **`web/`**: Contém arquivos específicos para a versão web da aplicação.
 
 ---
 
-## Configurações Adicionais
+## Instalação e Execução localmente
 
-- **`.gitignore`**: Arquivo de configuração do Git para ignorar arquivos e diretórios.
-- **`app.json`**: Arquivo de configuração do Expo.
-- **`expo-env.d.ts`**: Definições de tipos para o Expo.
-- **`package.json`**: Arquivo de configuração do npm.
-- **`tsconfig.json`**: Arquivo de configuração do TypeScript.
-- **`README.md`**: Documentação do projeto.
+IMPORTANTE: Caso ainda não possua rodado nenhuma aplicação em React Native Expo, deve seguir este guia simples deles: https://docs.expo.dev/get-started/set-up-your-environment/
 
----
-
-## Instalação e Execução
+Basicamente será necessário baixar o aplicativo
 
 ### Instalação das Dependências
 
-Para instalar as dependências do projeto, execute o seguinte comando:
+Após clonar o projeto, para instalar as dependências do projeto, execute o seguinte comando:
 
 ```bash
 npm install
