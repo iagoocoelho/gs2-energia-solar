@@ -47,7 +47,7 @@ Abaixo está a estrutura principal de diretórios do projeto:
 
 IMPORTANTE: Caso ainda não possua rodado nenhuma aplicação em React Native Expo, deve seguir este guia simples deles: https://docs.expo.dev/get-started/set-up-your-environment/
 
-Basicamente será necessário baixar o aplicativo
+Basicamente será necessário baixar o aplicativo da Expo para sincronizar o localmente ao aplicativo Solara.
 
 ### Instalação das Dependências
 
