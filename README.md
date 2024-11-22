@@ -10,7 +10,7 @@ Este é um projeto para faculdade FIAP desenvolvido com React Native Expo para g
 - Listagem de Anúncios;
 - Impulsionamento de Anúncios;
 - Média de Precificação na Região;
-- Interface moderna com componentes reutilizáveis.
+- Busca de combinações de anúncios;
 
 ## Justificativa das escolhas técnicas:
 
