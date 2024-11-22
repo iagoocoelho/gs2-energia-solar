@@ -1,6 +1,6 @@
 # GS2 Energia Solar
 
-Este é um projeto para faculdade FIAP desenvolvido com React Native Expo para gerenciar anúncios de energia solar. O projeto possui funcionalidades para **compradores** e **vendedores** de energia solar.
+Este é um projeto para Faculdade FIAP desenvolvido em React Native Expo para conectar vendedores com compradores que tenham excesso de energia para vender.
 
 ---
 
