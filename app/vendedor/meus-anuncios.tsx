@@ -1,6 +1,13 @@
-import UIButton from "@/components/ui/Button";
 import React, { useState } from "react";
-import { View, Text, FlatList, Button, StyleSheet, Alert } from "react-native";
+import Entypo from "@expo/vector-icons/Entypo";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import {
+  View,
+  Text,
+  FlatList,
+  TouchableOpacity,
+  StyleSheet,
+} from "react-native";
 
 type Anuncio = {
   id: string;
@@ -55,18 +62,32 @@ const MyAnnouncements = () => {
       </Text>
 
       <View style={styles.buttonContainer}>
-        <UIButton
-          style={{ backgroundColor: "red" }}
+        <TouchableOpacity
+          style={[
+            styles.button,
+            { backgroundColor: "red" },
+            !item.ativo && styles.buttonDisabled,
+          ]}
           onPress={() => handleExcluir(item.id)}
-          title="Inativar"
+          activeOpacity={0.8}
           disabled={!item.ativo}
-        />
+        >
+          <Entypo name="trash" size={26} color="white" />
+        </TouchableOpacity>
 
-        <UIButton
+        <TouchableOpacity
+          style={[
+            styles.button,
+            !item.ativo && styles.buttonDisabled,
+            { flexDirection: "row" },
+          ]}
           onPress={() => handleImpulsionar(item.id)}
-          title="Impulsionar"
+          activeOpacity={0.8}
           disabled={!item.ativo}
-        />
+        >
+          <Text style={styles.buttonText}>IMPULSIONAR</Text>
+          <MaterialIcons name="rocket-launch" size={26} color="white" />
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -126,9 +147,26 @@ const styles = StyleSheet.create({
     color: "#6b6b6b63",
   },
   buttonContainer: {
-    marginTop: 10,
     flexDirection: "row",
     justifyContent: "space-between",
+  },
+  button: {
+    backgroundColor: "#45C4B0",
+    paddingVertical: 10,
+    borderRadius: 8,
+    marginTop: 20,
+    paddingHorizontal: 15,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  buttonText: {
+    fontSize: 16,
+    color: "white",
+    marginRight: 10,
+    fontWeight: "bold",
+  },
+  buttonDisabled: {
+    backgroundColor: "#A8A8A8",
   },
 });
 
