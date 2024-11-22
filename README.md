@@ -12,6 +12,10 @@ Este é um projeto para faculdade FIAP desenvolvido com React Native Expo para g
 - Média de Precificação na Região;
 - Interface moderna com componentes reutilizáveis.
 
+## Justificativa das escolhas técnicas:
+
+Optamos por React Native juntamente com Expo devido a facilidade, simplicidade e agilidade para construção de uma aplicação .
+
 ---
 
 ## 📂 Estrutura do Projeto
@@ -56,6 +60,8 @@ Após clonar o projeto, para instalar as dependências do projeto, execute o seg
 ```bash
 npm install
 ```
+
+### Execução do projeto
 
 ```bash
 npx expo start
